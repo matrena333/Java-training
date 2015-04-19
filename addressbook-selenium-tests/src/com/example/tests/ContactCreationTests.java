@@ -13,7 +13,7 @@ public class ContactCreationTests extends TestBase {
     contact.lastname = "Kulikova";
     contact.address = "Moscow";
     contact.homephone = "84956745346";
-    contact.mobilephone = "89263546565";
+    contact.mobilephone = "89263546553";
     contact.workphone = "83647463535";
     contact.email1 = "email1@email.com";
     contact.email2 = "email2@email.com";
