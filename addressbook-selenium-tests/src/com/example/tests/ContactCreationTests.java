@@ -9,12 +9,12 @@ public class ContactCreationTests extends TestBase {
     openMainPage();
     initContactCreation();
     ContactData contact = new ContactData();
-    contact.firstname = "Anna";
-    contact.lastname = "Kulikova";
-    contact.address = "Moscow";
-    contact.homephone = "84956745346";
-    contact.mobilephone = "89263546553";
-    contact.workphone = "83647463535";
+    contact.firstname = "firstname";
+    contact.lastname = "lastname";
+    contact.address = "address1";
+    contact.homephone = "homephone";
+    contact.mobilephone = "mobilephone";
+    contact.workphone = "workphone";
     contact.email1 = "email1@email.com";
     contact.email2 = "email2@email.com";
     contact.bday = "15";
@@ -22,7 +22,7 @@ public class ContactCreationTests extends TestBase {
     contact.byear = "1985";
     contact.group = "Group 1";
     contact.address2 = "Address2";
-    contact.homephone2 = "94957463524";
+    contact.homephone2 = "homephone2";
 	fillContactForm(contact);
     submitContactCreation();
     
