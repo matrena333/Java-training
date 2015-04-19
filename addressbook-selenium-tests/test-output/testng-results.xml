@@ -1,38 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="4" passed="4">
+<testng-results skipped="0" failed="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="23981" started-at="2015-04-18T09:09:45Z" finished-at="2015-04-18T09:10:09Z">
+  <suite name="Default suite" duration-ms="32633" started-at="2015-04-19T07:44:42Z" finished-at="2015-04-19T07:45:14Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="23981" started-at="2015-04-18T09:09:45Z" finished-at="2015-04-18T09:10:09Z">
-      <class name="com.example.tests.AlsoGroupCreationTests">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.example.tests.AlsoGroupCreationTests@17ed40e0]" name="setUp" is-config="true" duration-ms="7973" started-at="2015-04-18T12:09:45Z" finished-at="2015-04-18T12:09:53Z">
+    <test name="Default test" duration-ms="32633" started-at="2015-04-19T07:44:42Z" finished-at="2015-04-19T07:45:14Z">
+      <class name="com.example.tests.ContactCreationTests">
+        <test-method status="PASS" signature="testNonEmptyContactCreation()[pri:0, instance:com.example.tests.ContactCreationTests@50cbc42f]" name="testNonEmptyContactCreation" duration-ms="7639" started-at="2015-04-19T10:45:06Z" finished-at="2015-04-19T10:45:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testNonEmptyContactCreation -->
+      </class> <!-- com.example.tests.ContactCreationTests -->
+      <class name="com.example.tests.GroupCreationTests">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.example.tests.GroupCreationTests@50675690]" name="setUp" is-config="true" duration-ms="16865" started-at="2015-04-19T10:44:42Z" finished-at="2015-04-19T10:44:58Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testEmptyGroupCreation()[pri:0, instance:com.example.tests.AlsoGroupCreationTests@17ed40e0]" name="testEmptyGroupCreation" duration-ms="3688" started-at="2015-04-18T12:10:01Z" finished-at="2015-04-18T12:10:05Z">
+        <test-method status="PASS" signature="testEmptyGroupCreation()[pri:0, instance:com.example.tests.GroupCreationTests@50675690]" name="testEmptyGroupCreation" duration-ms="4122" started-at="2015-04-19T10:44:59Z" finished-at="2015-04-19T10:45:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testEmptyGroupCreation -->
-        <test-method status="PASS" signature="testNonEmptyGroupCreation()[pri:0, instance:com.example.tests.AlsoGroupCreationTests@17ed40e0]" name="testNonEmptyGroupCreation" duration-ms="4066" started-at="2015-04-18T12:10:05Z" finished-at="2015-04-18T12:10:09Z">
+        <test-method status="PASS" signature="testNonEmptyGroupCreation()[pri:0, instance:com.example.tests.GroupCreationTests@50675690]" name="testNonEmptyGroupCreation" duration-ms="3573" started-at="2015-04-19T10:45:03Z" finished-at="2015-04-19T10:45:06Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testNonEmptyGroupCreation -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.example.tests.AlsoGroupCreationTests@17ed40e0]" name="tearDown" is-config="true" duration-ms="343" started-at="2015-04-18T12:10:09Z" finished-at="2015-04-18T12:10:09Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.example.tests.GroupCreationTests@50675690]" name="tearDown" is-config="true" duration-ms="367" started-at="2015-04-19T10:45:14Z" finished-at="2015-04-19T10:45:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.example.tests.AlsoGroupCreationTests -->
-      <class name="com.example.tests.GroupCreationTests">
-        <test-method status="PASS" signature="testEmptyGroupCreation()[pri:0, instance:com.example.tests.GroupCreationTests@50cbc42f]" name="testEmptyGroupCreation" duration-ms="4038" started-at="2015-04-18T12:09:53Z" finished-at="2015-04-18T12:09:57Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testEmptyGroupCreation -->
-        <test-method status="PASS" signature="testNonEmptyGroupCreation()[pri:0, instance:com.example.tests.GroupCreationTests@50cbc42f]" name="testNonEmptyGroupCreation" duration-ms="3846" started-at="2015-04-18T12:09:57Z" finished-at="2015-04-18T12:10:01Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testNonEmptyGroupCreation -->
       </class> <!-- com.example.tests.GroupCreationTests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
