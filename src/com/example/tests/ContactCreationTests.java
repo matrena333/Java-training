@@ -11,7 +11,7 @@ public class ContactCreationTests extends TestBase {
     ContactData contact = new ContactData();
     contact.firstname = "firstname";
     contact.lastname = "lastname";
-    contact.address = "address1";
+    contact.address = "";
     contact.homephone = "homephone";
     contact.mobilephone = "mobilephone";
     contact.workphone = "workphone";
@@ -20,7 +20,7 @@ public class ContactCreationTests extends TestBase {
     contact.bday = "15";
     contact.bmonth = "June";
     contact.byear = "1985";
-    contact.group = "Group 1";
+    contact.group = "group name 1";
     contact.address2 = "Address2";
     contact.homephone2 = "homephone2";
 	app.getContactHelper().fillContactForm(contact);

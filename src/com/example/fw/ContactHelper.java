@@ -26,14 +26,28 @@ public class ContactHelper extends HelperBase {
 	    selectByText(By.name("bday"), contact.bday);
 	    selectByText(By.name("bmonth"), contact.bmonth);
 	    type(By.name("byear"), contact.byear);
-	    //selectByText(By.name("new_group"), contact.group);
+	    selectByText(By.name("new_group"), contact.group);
 	    type(By.name("address2"), contact.address2);
 	    type(By.name("phone2"), contact.homephone2);
 	  }
 
 
 	public void submitContactCreation() {
-		click(By.linkText("submit"));
+		click(By.name("submit"));
 	  }
+
+	public void initContactModification(int index) {
+		click(By.xpath("//img[@alt='Edit'][" + index + "]"));
+		}
+
+	public void deleteContact() {
+		click(By.xpath("//input[@value='Delete']"));	
+	}
+
+	public void submitContactModification() {
+		click(By.name("update"));
+	}
+
+
 
 }
