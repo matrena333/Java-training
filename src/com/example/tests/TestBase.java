@@ -13,7 +13,7 @@ import com.example.fw.ApplicationManager;
 
 public class TestBase {
 	
-	protected ApplicationManager app;
+	protected static ApplicationManager app;
 
 	@BeforeTest
 	public void setUp() throws Exception {
@@ -29,30 +29,32 @@ public class TestBase {
 		public Iterator<Object[] > randomValidGroupGenerator() {
 		  List<Object[]> list = new ArrayList<Object[]>();
 		  for (int i = 0; i < 5; i++) {
-			GroupData group = new GroupData();
-			group.name = generateRandomString();
-			group.header = generateRandomString();
-			group.footer = generateRandomString();
+			GroupData group = new GroupData()
+				.withName(generateRandomString())
+				.withHeader(generateRandomString())
+				.withFooter(generateRandomString());
 			list.add(new Object[]{group});
 		}
 		  return list.iterator();
 	  }
 	  
-		  @DataProvider
+
+
+		@DataProvider
 			public Iterator<Object[] > randomValidContactGenerator() {
 			  List<Object[]> list = new ArrayList<Object[]>();
 			  for (int i = 0; i < 5; i++) {
-				ContactData contact = new ContactData();
-				contact.firstname = generateRandomString();
-				contact.lastname = generateRandomString();
-				contact.address = generateRandomString();
-				contact.homephone = generateRandomString();
-				contact.mobilephone = generateRandomString();
-				contact.workphone = generateRandomString();
-				contact.email1 = generateRandomString();
-				contact.email2 = generateRandomString();
-				contact.address2 = generateRandomString();
-				contact.homephone2 = generateRandomString();
+				ContactData contact = new ContactData()
+					.withFirstname(generateRandomString())
+					.withLastname(generateRandomString())
+					.withAddress(generateRandomString())
+					.withHomephone(generateRandomString())
+					.withMobilephone(generateRandomString())
+					.withWorkphone(generateRandomString())
+					.withEmail1(generateRandomString())
+					.withEmail2(generateRandomString())
+					.withAddress2(generateRandomString())
+					.withHomephone2(generateRandomString());
 				list.add(new Object[]{contact});
 			}
 			  return list.iterator();
