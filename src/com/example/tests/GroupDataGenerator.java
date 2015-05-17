@@ -35,8 +35,14 @@ public class GroupDataGenerator {
 		}
 	}
 
-	private static void saveGroupsToXmlFile(List<GroupData> groups, File file) {
-		
+	private static void saveGroupsToXmlFile(List<GroupData> groups, File file) throws IOException {
+		FileWriter writer = new FileWriter(file);
+		writer.write("<groups>\n");
+		for (GroupData group : groups) {
+			writer.write(" <group>\n  <name>" + group.getName() + "</name>\n  <header>" + group.getHeader() + "</header>\n  <footer>" + group.getFooter() + "</footer>\n </group>\n");
+		}
+		writer.write("</groups>\n");
+		writer.close();
 	}
 
 	private static void saveGroupsToCsvFile(List<GroupData> groups, File file) throws IOException {

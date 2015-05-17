@@ -35,9 +35,14 @@ public class ContactDataGenerator {
 		}
 	}
 
-	private static void saveContactsToXmlFile(List<ContactData> contacts,
-			File file) {
-		
+	private static void saveContactsToXmlFile(List<ContactData> contacts, File file) throws IOException {
+		FileWriter writer = new FileWriter(file);
+		writer.write("<contacts>\n");
+		for (ContactData contact : contacts) {
+			writer.write(" <contact>\n  <lastname>" + contact.getLastname() + "</lastname>\n  <firstname>" + contact.getFirstname() + "</firstname>\n  <address>" + contact.getAddress() + "</address>\n  <homephone>" + contact.getHomephone() + "</homephone>\n  <mobilephone>" + contact.getMobilephone() + "</mobilephone>\n  <workphone>" + contact.getWorkphone() + "</workphone>\n  <email1>" + contact.getEmail1() + "</email1>\n  <email2>" + contact.getEmail2() + "</email2>\n  <address2>" + contact.getAddress2() + "</address2>\n  <homephone2>" + contact.getHomephone2() + "</homephone2>\n </contact>\n");
+		}
+		writer.write("</contacts>\n");
+		writer.close();
 	}
 
 	private static void saveContactsToCsvFile(List<ContactData> contacts, File file) throws IOException {
