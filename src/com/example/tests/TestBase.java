@@ -1,10 +1,15 @@
 package com.example.tests;
 
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 
@@ -19,7 +24,10 @@ public class TestBase {
 
 	@BeforeTest
 	public void setUp() throws Exception {
-		app = new ApplicationManager ();
+		String configFile = System.getProperty("configFile", "application.properties");
+		Properties properties = new Properties();
+		properties.load(new FileReader(new File(configFile)));
+		app = new ApplicationManager(properties);
 	  }
 
 	@AfterTest
@@ -31,14 +39,13 @@ public class TestBase {
 		public Iterator<Object[] > randomValidGroupGenerator() {
 		  return wrapGroupsForDataProvider(generateRandomGroups(5)).iterator();
 	  }
-	  
 
-		private List<Object[]> wrapGroupsForDataProvider(List<GroupData> groups) {
+		public static List<Object[]> wrapGroupsForDataProvider(List<GroupData> groups) {
 			List<Object[]> list = new ArrayList<Object[]>();
 			for (GroupData group : groups) {
 				list.add(new Object[]{group});
 			}
-			return null;
+			return list;
 	}
 
 		@DataProvider
@@ -47,12 +54,12 @@ public class TestBase {
 		  }
 
 		
-	  private List<Object[]> wrapContactsForDataProvider(List<ContactData> contacts) {
+	  public List<Object[]> wrapContactsForDataProvider(List<ContactData> contacts) {
 			List<Object[]> list = new ArrayList<Object[]>();
 			for (ContactData contact : contacts) {
 				list.add(new Object[]{contact});
 			}
-			return null;
+			return list;
 		}
 
 

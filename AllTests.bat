@@ -1,0 +1,3 @@
+java -cp bin;C:\Tools\xstream-1.4.8\lib\xstream-1.4.8.jar;C:\Tools\xstream-1.4.8\lib\xstream\xmlpull-1.1.3.1.jar;C:\Tools\xstream-1.4.8\lib\xstream\xpp3_min-1.1.4c.jar com.example.tests.GroupDataGenerator 4 groups.xml xml
+java -cp bin;C:\Tools\xstream-1.4.8\lib\xstream-1.4.8.jar;C:\Tools\xstream-1.4.8\lib\xstream\xmlpull-1.1.3.1.jar;C:\Tools\xstream-1.4.8\lib\xstream\xpp3_min-1.1.4c.jar com.example.tests.ContactDataGenerator 4 contacts.xml xml
+java -cp bin;C:\Tools\xstream-1.4.8\lib\xstream-1.4.8.jar;C:\Tools\xstream-1.4.8\lib\xstream\xmlpull-1.1.3.1.jar;C:\Tools\xstream-1.4.8\lib\xstream\xpp3_min-1.1.4c.jar;C:\Tools\selenium-server-standalone-2.45.0.jar -DconfigFile=ie.properties org.testng.TestNG testng-customsuite.xml

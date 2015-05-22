@@ -1,11 +1,15 @@
 package com.example.tests;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import com.thoughtworks.xstream.XStream;
 
 public class ContactDataGenerator {
 
@@ -36,13 +40,18 @@ public class ContactDataGenerator {
 	}
 
 	private static void saveContactsToXmlFile(List<ContactData> contacts, File file) throws IOException {
+		XStream xstream = new XStream();
+		xstream.alias("contact", ContactData.class);
+		String xml = xstream.toXML(contacts);
 		FileWriter writer = new FileWriter(file);
-		writer.write("<contacts>\n");
-		for (ContactData contact : contacts) {
-			writer.write(" <contact>\n  <lastname>" + contact.getLastname() + "</lastname>\n  <firstname>" + contact.getFirstname() + "</firstname>\n  <address>" + contact.getAddress() + "</address>\n  <homephone>" + contact.getHomephone() + "</homephone>\n  <mobilephone>" + contact.getMobilephone() + "</mobilephone>\n  <workphone>" + contact.getWorkphone() + "</workphone>\n  <email1>" + contact.getEmail1() + "</email1>\n  <email2>" + contact.getEmail2() + "</email2>\n  <address2>" + contact.getAddress2() + "</address2>\n  <homephone2>" + contact.getHomephone2() + "</homephone2>\n </contact>\n");
-		}
-		writer.write("</contacts>\n");
+		writer.write(xml);
 		writer.close();
+	}
+	
+	public static List<ContactData> loadContactsFromXmlFile(File file) throws IOException {
+		XStream xstream = new XStream();
+		xstream.alias("contact", ContactData.class);		
+		return (List<ContactData>) xstream.fromXML(file);
 	}
 
 	private static void saveContactsToCsvFile(List<ContactData> contacts, File file) throws IOException {
@@ -51,10 +60,35 @@ public class ContactDataGenerator {
 			writer.write(contact.getLastname() + "," + contact.getFirstname() + "," + contact.getAddress() + "," 
 		+ contact.getHomephone() + "," + contact.getMobilephone() + "," + contact.getWorkphone() + "," 
 					+ contact.getEmail1() + "," + contact.getEmail2() + "," + contact.getAddress2() + "," 
-		+ contact.getHomephone2() + "\n");
+		+ contact.getHomephone2() + ",!" + "\n");
 		}
 		writer.close();
 	}
+	
+	  public static List<ContactData> loadContactsFromCsvFile(File file) throws IOException {
+		  List<ContactData> list = new ArrayList<ContactData>();
+		  FileReader reader = new FileReader(file);
+		  BufferedReader bufferedReader = new BufferedReader(reader);
+		  String line = bufferedReader.readLine();
+		  while (line != null) {
+			  String[] part = line.split(",");
+			  ContactData contact = new ContactData()
+			  	.withLastname(part[0])
+			  	.withFirstname(part[1])
+			  	.withAddress(part[2])
+			  	.withHomephone(part[3])
+			  	.withMobilephone(part[4])
+			  	.withWorkphone(part[5])
+			  	.withEmail1(part[6])
+			  	.withEmail2(part[7])
+			  	.withAddress2(part[8]);
+			  list.add(contact);
+			  line = bufferedReader.readLine(); 			
+		}
+		  bufferedReader.close();
+		  return list;
+		}
+
 
 	public static List<ContactData> generateRandomContacts(int amount) {
 		  List<ContactData> list = new ArrayList<ContactData>();
