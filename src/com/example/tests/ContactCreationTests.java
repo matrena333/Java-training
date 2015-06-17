@@ -13,7 +13,6 @@ import org.testng.annotations.Test;
 import com.example.utils.SortedListOf;
 
 import static com.example.fw.ContactHelper.CREATION;
-import static com.example.tests.ContactDataGenerator.loadContactsFromCsvFile;
 import static com.example.tests.ContactDataGenerator.loadContactsFromXmlFile;
 
 public class ContactCreationTests extends TestBase {
@@ -28,16 +27,27 @@ public class ContactCreationTests extends TestBase {
   public void testNonEmptyContactCreation(ContactData contact) throws Exception {
    
     // save old state
-	 SortedListOf<ContactData> oldList = app.getContactHelper().getContacts();
+	 SortedListOf<ContactData> oldList	= new SortedListOf<ContactData>(app.getModel().getContacts());
        
 	// actions
     app.getContactHelper().createContact(contact, CREATION);
     
     // save new state
-    SortedListOf<ContactData> newList = app.getContactHelper().getContacts();
+	 SortedListOf<ContactData> newList	= new SortedListOf<ContactData>(app.getModel().getContacts());
     
     // compare states  
 	assertThat(newList, equalTo(oldList.withAdded(contact)));
-    
+	
+	if ("yes".equals(app.getProperty("check.db"))) {
+		if (wantToCheck()) {
+			assertThat(app.getModel().getContacts(), equalTo(app.getHibernateHelper().listContacts()));
+		}
+	if ("yes".equals(app.getProperty("check.ui"))) {
+		if (wantToCheck()) {
+			assertThat(app.getModel().getContacts(), equalTo(app.getContactHelper().getUiContacts()));
+			}	
+		}
+	}
+   
   }
 }

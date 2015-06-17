@@ -17,7 +17,7 @@ public class ContactModificationTests extends TestBase {
 		app.navigateTo().mainPage();
 		
 	    // save old state
-		SortedListOf<ContactData> oldList = app.getContactHelper().getContacts();
+		 SortedListOf<ContactData> oldList	= new SortedListOf<ContactData>(app.getModel().getContacts());
 	    
 	    Random rnd = new Random();
 	    int index = rnd.nextInt(oldList.size()-1);
@@ -26,9 +26,20 @@ public class ContactModificationTests extends TestBase {
 	    app.getContactHelper().modifyContact(index, contact, false);
 		
 	    // save new state
-	    SortedListOf<ContactData> newList = app.getContactHelper().getContacts();
+		 SortedListOf<ContactData> newList	= new SortedListOf<ContactData>(app.getModel().getContacts());
 	    
 	    // compare states  
 		assertThat(newList, equalTo(oldList.without(index).withAdded(contact)));
+		
+		if ("yes".equals(app.getProperty("check.db"))) {
+			if (wantToCheck()) {
+				assertThat(app.getModel().getContacts(), equalTo(app.getHibernateHelper().listContacts()));
+			}
+		if ("yes".equals(app.getProperty("check.ui"))) {
+			if (wantToCheck()) {
+				assertThat(app.getModel().getContacts(), equalTo(app.getContactHelper().getUiContacts()));
+				}	
+			}
+		}  
 	}
 }
